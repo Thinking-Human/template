@@ -1,0 +1,64 @@
+---
+# Copy this folder to src/content/posts/<your-slug>/ and edit. The folder name is the URL: /posts/<your-slug>/.
+title: 'One question, as a title'
+description: 'One sentence: what the reader will know after reading. Shown on the blog list and in link previews.'
+date: 2026-10-28
+authors:
+  - { name: 'Your Name', url: 'https://example.com/' }
+  # - { name: 'Co-author', url: 'https://example.com/', mark: '*' }
+# authorNote: '*Equal contribution'
+tags: ['notes']
+# scene: robot_arm   # optional: one 3D model in the side panel for the whole post
+draft: true          # remove when ready to publish
+---
+
+import Figure from '../../../components/Figure.astro';
+import Diagram from '../../../components/Diagram.astro';
+
+{/* House style: one question per post, figures before paragraphs, show the work.
+    Delete these comments as you go. Comments like this are not rendered. */}
+
+State the question in the first sentence, and the answer in the second. Figure 1 is the map for the rest of the post. Cite work by number, like ReAct [1]; "Figure N", "Table N" and "[n]" become links automatically.
+
+<Figure width={760} title="The whole idea in one figure." caption="One or two sentences on what the reader should take away, not what the boxes are.">
+  <Diagram
+    width={760}
+    height={150}
+    nodes={[
+      { id: 'in', x: 20, y: 45, w: 170, h: 60, label: 'Input', kind: 'source' },
+      { id: 'step', x: 295, y: 45, w: 170, h: 60, label: 'What we\nchanged', kind: 'model' },
+      { id: 'out', x: 570, y: 45, w: 170, h: 60, label: 'Result', kind: 'neutral' },
+    ]}
+    edges={[
+      { from: 'in', to: 'step' },
+      { from: 'step', to: 'out' },
+    ]}
+  />
+</Figure>
+
+## First part of the answer
+
+One idea per section. Lead with the claim, then the evidence. If a table or a diagram says it faster, use that instead of prose.
+
+<Figure kind="table" title="A comparison." caption="Every table sits in a captioned Figure; `npm run build` fails otherwise.">
+
+| Approach | What it needs | Where it breaks |
+|---|---|---|
+| A | … | … |
+| B | … | … |
+
+</Figure>
+
+## Second part of the answer
+
+Keep paragraphs short. Footnotes are fine for asides.[^1]
+
+## What we still don't know
+
+Close with the open questions, honestly. Then stop.
+
+## References
+
+1. S. Yao et al. [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629). International Conference on Learning Representations (ICLR), 2023.
+
+[^1]: Like this one.
